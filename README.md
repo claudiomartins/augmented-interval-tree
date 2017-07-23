@@ -6,22 +6,22 @@ concurrent rides are happening at a given time.
 
 The input is a list of rides with start / end time exactly like following (from standard input)
 
-7:13 AM, 7:23 AM
-6:50 AM, 7:08 AM
-7:10 AM, 7:30 AM
-6:52 AM, 7:33 AM
-6:58 AM, 7:23 AM
+7:13 AM, 7:23 AM <br/>
+6:50 AM, 7:08 AM <br/>
+7:10 AM, 7:30 AM <br/>
+6:52 AM, 7:33 AM <br/>
+6:58 AM, 7:23 AM <br/>
 
 The exact output for this list of input should be (to the standard output)
 
-6:50 AM, 6:52 AM, 1
-6:52 AM, 6:58 AM, 2
-6:58 AM, 7:08 AM, 3
-7:08 AM, 7:10 AM, 2
-7:10 AM, 7:13 AM, 3
-7:13 AM, 7:23 AM, 4
-7:23 AM, 7:30 AM, 2
-7:30 AM, 7:33 AM, 1
+6:50 AM, 6:52 AM, 1 <br/>
+6:52 AM, 6:58 AM, 2 <br/>
+6:58 AM, 7:08 AM, 3 <br/>
+7:08 AM, 7:10 AM, 2 <br/>
+7:10 AM, 7:13 AM, 3 <br/>
+7:13 AM, 7:23 AM, 4 <br/>
+7:23 AM, 7:30 AM, 2 <br/>
+7:30 AM, 7:33 AM, 1 <br/>
 
 Note that the time intervals here are continuous and showing exactly how many trips at that time interval.
 
@@ -61,4 +61,8 @@ Each node contains the information about the maximum value of the subtree, this 
 - deletion of nodes
 - recalculating the maximum value of the subtree when a change or deletion happens in any of the nodes
 
+
+# Other notes
+
+- when querying the tree, I am adding one second to the start interval time and removing one second from the end interval time. The reason is that because the times are rounded, they collide with each other when doing the queries. For example, querying the range  "07:30 AM, 07:33 AM" would also return the interval "7:10 AM, 7:30 AM" as "7:30 AM" is within the range, since we're looking for :00 seconds across the board.
 
